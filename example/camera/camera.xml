@@ -1,0 +1,36 @@
+<Graph nodesize="10" vspacing="3" hspacing="20" padding="4" guid="ACBE409D-01D6-43F4-371E-BB4D1113CDE5" searchurl="https://www.google.com.ua/search?q=###SEARCH###">
+  <datagroups/>
+  <Nodes>
+    <Node guid="BE6D795A025D" nodeName="Thing" nclass="" shape="circle" color="13421772" xPos="657.55" yPos="40" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D79799A4F" nodeName="Money" nclass="" shape="circle" color="13421772" xPos="57.6" yPos="40" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D799A364B" nodeName="PurchaseableItem" nclass="" shape="circle" color="13421772" xPos="473.6" yPos="271.85" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D79A0F76D" nodeName="Range" nclass="" shape="circle" color="13421772" xPos="57.6" yPos="70" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D79A474AE" nodeName="Viewer" nclass="" shape="circle" color="13421772" xPos="57.6" yPos="100" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D79A9B62A" nodeName="Window" nclass="" shape="circle" color="13421772" xPos="57.6" yPos="130" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D79BABA8F" nodeName="Body" nclass="" shape="circle" color="13421772" xPos="277.6" yPos="273.25" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D79BFB366" nodeName="Camera" nclass="" shape="circle" color="13421772" xPos="257.6" yPos="321.95" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D79C78936" nodeName="Lens" nclass="" shape="circle" color="13421772" xPos="57.6" yPos="160" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D79C85436" nodeName="BodyWithNonAdjustableShutterSpeed" nclass="" shape="circle" color="13421772" xPos="61.6" yPos="195.6" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D79D0F428" nodeName="Digital" nclass="" shape="circle" color="13421772" xPos="56.8" yPos="253.6" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D79D5DD58" nodeName="Large-Format" nclass="" shape="circle" color="13421772" xPos="58.35" yPos="290.8" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D79D65844" nodeName="SLR" nclass="" shape="circle" color="13421772" xPos="63.95" yPos="373.6" font="Verdana" fontsize="14"/>
+  </Nodes>
+  <Linkgroups>
+    <Group name="has subclass" color="65280"/>
+    <Group name="Default" color="10066329"/>
+  </Linkgroups>
+  <Edges>
+    <Edge guid="BE6D799908AE" edgeName="" node1="Money" node2="Thing" group="has subclass" istwoway="false"/>
+    <Edge guid="BE6D799F4161" edgeName="" node1="PurchaseableItem" node2="Thing" group="has subclass" istwoway="false"/>
+    <Edge guid="BE6D79A493BF" edgeName="" node1="Range" node2="Thing" group="has subclass" istwoway="false"/>
+    <Edge guid="BE6D79A8D435" edgeName="" node1="Viewer" node2="Thing" group="has subclass" istwoway="false"/>
+    <Edge guid="BE6D79BAD125" edgeName="" node1="Window" node2="Thing" group="has subclass" istwoway="false"/>
+    <Edge guid="BE6D79BF7B9A" edgeName="" node1="Body" node2="PurchaseableItem" group="has subclass" istwoway="false"/>
+    <Edge guid="BE6D79C6B109" edgeName="" node1="Camera" node2="PurchaseableItem" group="has subclass" istwoway="false"/>
+    <Edge guid="BE6D79C870AD" edgeName="" node1="Lens" node2="PurchaseableItem" group="has subclass" istwoway="false"/>
+    <Edge guid="BE6D79CCF3DB" edgeName="" node1="BodyWithNonAdjustableShutterSpeed" node2="Body" group="has subclass" istwoway="false"/>
+    <Edge guid="BE6D79D4693D" edgeName="" node1="Digital" node2="Camera" group="has subclass" istwoway="false"/>
+    <Edge guid="BE6D79D6AA0F" edgeName="" node1="Large-Format" node2="Camera" group="has subclass" istwoway="false"/>
+    <Edge guid="BE6D79DAF83F" edgeName="" node1="SLR" node2="Camera" group="has subclass" istwoway="false"/>
+  </Edges>
+</Graph>
