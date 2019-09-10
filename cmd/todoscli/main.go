@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/urfave/cli"
+	"log"
 	"os"
 	"path/filepath"
 	"time"
@@ -41,6 +42,11 @@ func main() {
 
 	app.Action = func(c *cli.Context) error {
 
+		dir, err := os.Getwd()
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println(dir)
 		src := c.String("src")
 		fmt.Println(" Source file", src)
 		dst := c.String("dst")
