@@ -1,0 +1,64 @@
+<Graph nodesize="10" vspacing="3" hspacing="20" padding="4" guid="ACBE409D-01D6-43F4-371E-BB4D1113CDE5" searchurl="https://www.google.com.ua/search?q=###SEARCH###">
+  <datagroups>
+    <datagroup>part</datagroup>
+    <datagroup>Camera</datagroup>
+    <datagroup>Lens</datagroup>
+  </datagroups>
+  <Nodes>
+    <Node guid="BE6D795A025D" nodeName="Thing" nclass="" shape="circle" color="13421772" xPos="795.15" yPos="172.9" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D79799A4F" nodeName="Money" nclass="" shape="circle" color="13421772" xPos="398.9" yPos="40" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D799A364B" nodeName="PurchaseableItem" nclass="" shape="circle" color="13421772" xPos="413.75" yPos="272.35" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D79A0F76D" nodeName="Range" nclass="" shape="circle" color="13421772" xPos="406.4" yPos="93.65" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D79A474AE" nodeName="Viewer" nclass="" shape="circle" color="13421772" xPos="408" yPos="137" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D79A9B62A" nodeName="Window" nclass="" shape="circle" color="13421772" xPos="410.65" yPos="192.15" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D79BABA8F" nodeName="Body" nclass="" shape="circle" color="13421772" xPos="277" yPos="318.85" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D79BFB366" nodeName="Camera" nclass="" shape="circle" color="13421772" xPos="265.1" yPos="388.5" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D79C78936" nodeName="Lens" nclass="" shape="circle" color="13421772" xPos="57" yPos="205.85" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D79C85436" nodeName="BodyWithNonAdjustableShutterSpeed" nclass="" shape="circle" color="13421772" xPos="61" yPos="240.85" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D79D0F428" nodeName="Digital" nclass="" shape="circle" color="13421772" xPos="57.5" yPos="313" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D79D5DD58" nodeName="Large-Format" nclass="" shape="circle" color="13421772" xPos="61.7" yPos="364.8" font="Verdana" fontsize="14"/>
+    <Node guid="BE6D79D65844" nodeName="SLR" nclass="" shape="circle" color="13421772" xPos="63" yPos="418.85" font="Verdana" fontsize="14"/>
+    <Node guid="0BA76C17C63A" nodeName="ThroughTheLens" nclass="" shape="circle" color="13421772" xPos="151.75" yPos="201.4" font="Verdana" fontsize="14"/>
+    <Node guid="0BA9646A2EB0" nodeName="WindowOnTopOfCamera" nclass="" shape="circle" color="13421772" xPos="152.1" yPos="151.6" font="Verdana" fontsize="14"/>
+  </Nodes>
+  <Linkgroups>
+    <Group name="part" color="16776960"/>
+    <Group name="lens" color="3342387"/>
+    <Group name="Default" color="10066329"/>
+    <Group name="NamedIndividual" color="10066329"/>
+    <Group name="Equivalent To" color="13408563"/>
+    <Group name="has subclass" color="255"/>
+  </Linkgroups>
+  <Edges>
+    <Edge guid="BE6D799908AE" edgeName="link_1" node1="Money" node2="Thing" group="has subclass" istwoway="false"/>
+    <Edge guid="BE6D799F4161" edgeName="link_2" node1="PurchaseableItem" node2="Thing" group="has subclass" istwoway="false"/>
+    <Edge guid="BE6D79A493BF" edgeName="link_3" node1="Range" node2="Thing" group="has subclass" istwoway="false"/>
+    <Edge guid="BE6D79A8D435" edgeName="link_4" node1="Viewer" node2="Thing" group="Equivalent To" istwoway="false">
+      <data tclass="" type="text" link="">{ThroughTheLens , WindowOnTopOfCamera}</data>
+    </Edge>
+    <Edge guid="BE6D79BAD125" edgeName="link_5" node1="Window" node2="Thing" group="has subclass" istwoway="false"/>
+    <Edge guid="BE6D79BF7B9A" edgeName="link_6" node1="Body" node2="PurchaseableItem" group="has subclass" istwoway="false"/>
+    <Edge guid="BE6D79C6B109" edgeName="link_7" node1="Camera" node2="PurchaseableItem" group="has subclass" istwoway="false"/>
+    <Edge guid="BE6D79C870AD" edgeName="link_8" node1="Lens" node2="PurchaseableItem" group="has subclass" istwoway="false"/>
+    <Edge guid="BE6D79CCF3DB" edgeName="link_9" node1="BodyWithNonAdjustableShutterSpeed" node2="Body" group="Equivalent To" istwoway="false">
+      <data tclass="" type="text" link="">Body
+ and (shutter-speed exactly 0 owl:Thing)</data>
+    </Edge>
+    <Edge guid="BE6D79D4693D" edgeName="link_10" node1="Digital" node2="Camera" group="has subclass" istwoway="false"/>
+    <Edge guid="BE6D79D6AA0F" edgeName="link_11" node1="Large-Format" node2="Camera" group="has subclass" istwoway="false"/>
+    <Edge guid="BE6D79DAF83F" edgeName="link_12" node1="SLR" node2="Camera" group="Equivalent To" istwoway="false">
+      <data tclass="" type="text" link="">Camera
+ and (viewFinder value ThroughTheLens)</data>
+    </Edge>
+    <Edge guid="0B97926DF17F" edgeName="" node1="Camera" node2="Body" group="lens" istwoway="false">
+      <data tclass="Lens" type="text" link="">ObjectPropertyRange</data>
+      <data tclass="part" type="text" link="">
+        SubObjectPropertyOf
+        <data tclass="" type="text" link="">body</data>
+      </data>
+      <data tclass="Camera" type="text" link="">ObjectPropertyDomain</data>
+    </Edge>
+    <Edge guid="0BA7CF305396" edgeName="" node1="ThroughTheLens" node2="Window" group="NamedIndividual" istwoway="false"/>
+    <Edge guid="0BAA3D8F1794" edgeName="" node1="WindowOnTopOfCamera" node2="Window" group="NamedIndividual" istwoway="false"/>
+  </Edges>
+</Graph>
