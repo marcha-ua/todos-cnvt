@@ -57,7 +57,7 @@ func main() {
 		if srcExt == ".owl" {
 
 		} else if srcExt == ".xml" {
-			err := parser.OntologyOwlFromParser(f)
+			err := parser.TodosOntologyParser(f)
 			if err != nil {
 				fmt.Println("Open source file error!", err)
 				return nil
