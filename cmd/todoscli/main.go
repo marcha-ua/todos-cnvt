@@ -47,7 +47,12 @@ func main() {
 		fmt.Println("Destination file", dst)
 
 		srcExt := filepath.Ext(src)
+		dstExt:=filepath.Ext(dst)
 
+		if srcExt == dstExt{
+			fmt.Println("Trying convert files same types", srcExt, dstExt)
+			return nil
+		}
 		f, err := os.Open(src)
 		if err != nil {
 			fmt.Println("Open source file error!", err)
@@ -57,7 +62,8 @@ func main() {
 		if srcExt == ".owl" {
 
 		} else if srcExt == ".xml" {
-			err := todos.OntologyParser(f)
+			tod := todos.Ontology{}
+			err := tod.OntologyParser(f)
 			if err != nil {
 				fmt.Println("Open source file error!", err)
 				return nil

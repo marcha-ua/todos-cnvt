@@ -3,22 +3,34 @@ package todos
 type NodeTodos int
 
 const (
-	NodeTag NodeTodos = iota
+	UnkTag NodeTodos = iota
+	GraphTag
+	NodeTag
 	GroupTag
 	DataTag
 	EdgeTag
 	DatagroupTag
 )
 
+var SupportTag = map[string]NodeTodos{
+	"graph":GraphTag,
+	"node":      NodeTag,
+	"group":     GroupTag,
+	"datagroup": DatagroupTag,
+	"edge":      EdgeTag,
+	"data":      DataTag,
+}
+
 type Node struct {
-	id       int
-	tag      NodeTodos
-	text     string
-	atr      []Atr
-	children []*Node
+	Id       int
+	Tag      NodeTodos
+	Text     string
+	AtrList  []Atr
+	Children []*Node
 }
 
 type Atr struct {
-	name  string
-	value string
+	Name  string
+	Space string
+	Value string
 }
