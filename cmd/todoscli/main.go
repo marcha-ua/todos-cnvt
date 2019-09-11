@@ -6,7 +6,7 @@ import (
 	"os"
 	"path/filepath"
 	"time"
-	"todos-cnvt/parser"
+	"todos-cnvt/todos"
 )
 
 func main() {
@@ -57,7 +57,7 @@ func main() {
 		if srcExt == ".owl" {
 
 		} else if srcExt == ".xml" {
-			err := parser.TodosOntologyParser(f)
+			err := todos.OntologyParser(f)
 			if err != nil {
 				fmt.Println("Open source file error!", err)
 				return nil

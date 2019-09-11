@@ -1,16 +1,13 @@
-package parser
+package todos
 
 import (
 	"encoding/xml"
 	"fmt"
+	"github.com/golang-collections/collections/stack"
 	"io"
 )
-import "github.com/golang-collections/collections/stack"
-type TodosOntology struct{
 
-}
-
-func TodosOntologyParser(r io.Reader) ( err error) {
+func OntologyParser(r io.Reader) (err error) {
 	decoder := xml.NewDecoder(r)
 	//	total := 0
 	stckTag := stack.New()
@@ -29,7 +26,7 @@ func TodosOntologyParser(r io.Reader) ( err error) {
 			fmt.Println("StartElement ", currentTag)
 		case xml.EndElement:
 			lastTag := stckTag.Peek()
-			if lastTag == currentTag.Name.Local{
+			if lastTag == currentTag.Name.Local {
 				//todo save
 			}
 			stckTag.Pop()
