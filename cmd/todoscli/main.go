@@ -1,11 +1,15 @@
 package main
 
 import (
+	"bufio"
+	"encoding/xml"
 	"fmt"
 	"github.com/urfave/cli"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
+	"todos-cnvt/owl"
 	"todos-cnvt/todos"
 )
 
@@ -47,9 +51,16 @@ func main() {
 		fmt.Println("Destination file", dst)
 
 		srcExt := filepath.Ext(src)
-		dstExt:=filepath.Ext(dst)
-
-		if srcExt == dstExt{
+		dstExt := filepath.Ext(dst)
+		if len(srcExt) == 0 {
+			fmt.Println("Source file not found", srcExt)
+			return nil
+		}
+		if len(dstExt) == 0 {
+			fmt.Println("Destination file not found", dstExt)
+			return nil
+		}
+		if srcExt == dstExt {
 			fmt.Println("Trying convert files same types", srcExt, dstExt)
 			return nil
 		}
@@ -67,6 +78,23 @@ func main() {
 			if err != nil {
 				fmt.Println("Open source file error!", err)
 				return nil
+			}
+			if dstExt == ".owl" {
+				name := filepath.Base(dst)
+				name = strings.Trim(name, dstExt)
+				f, err := os.Create(dst)
+				defer f.Close()
+
+				if err != nil {
+					fmt.Println(err)
+					return err
+				}
+				w := bufio.NewWriter(f)
+				_, err = w.WriteString(xml.Header)
+				err = owl.TodosFileBuilder(name, &tod, w)
+				if err != nil {
+					fmt.Println(err)
+				}
 			}
 		}
 

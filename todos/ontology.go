@@ -1,5 +1,7 @@
 package todos
 
+import "strings"
+
 type NodeTodos int
 
 const (
@@ -13,7 +15,7 @@ const (
 )
 
 var SupportTag = map[string]NodeTodos{
-	"graph":GraphTag,
+	"graph":     GraphTag,
 	"node":      NodeTag,
 	"group":     GroupTag,
 	"datagroup": DatagroupTag,
@@ -33,4 +35,57 @@ type Atr struct {
 	Name  string
 	Space string
 	Value string
+}
+
+type Ontology struct {
+	cnt int
+	tag []Node
+}
+
+type stk struct {
+	Id  int
+	Tag NodeTodos
+}
+
+func (t *Ontology) findById(id int) *Node {
+	for i, _ := range t.tag {
+		if t.tag[i].Id == id {
+			return &t.tag[i]
+		}
+	}
+	return nil
+}
+
+func (t *Ontology) FindByTag(tag NodeTodos, skip int) *Node {
+	for i, _ := range t.tag {
+		if t.tag[i].Tag == tag {
+			if skip == 0 {
+				return &t.tag[i]
+			}
+			skip--
+		}
+	}
+	return nil
+}
+
+func (t *Ontology) FindByAttr(tag NodeTodos, name string, value string, skip int) (int, *Node) {
+	n := t.FindByTag(tag, skip)
+	if n == nil {
+		return 0, nil
+	}
+	for idx, a := range n.AtrList {
+		if strings.EqualFold(a.Name, name) && strings.EqualFold(a.Value, value) {
+			return idx, n
+		}
+	}
+	return 0, nil
+}
+
+func (n *Node) GetAtrValue(name string) string {
+	for _, a := range n.AtrList {
+		if strings.EqualFold(a.Name, name) {
+			return a.Value
+		}
+	}
+	return ""
 }

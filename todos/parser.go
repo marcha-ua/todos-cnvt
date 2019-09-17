@@ -8,25 +8,6 @@ import (
 	"strings"
 )
 
-type Ontology struct {
-	cnt int
-	tag []Node
-}
-
-type stk struct {
-	Id  int
-	Tag NodeTodos
-}
-
-func (t *Ontology) findById(id int) *Node {
-	for i, _ := range t.tag {
-		if t.tag[i].Id == id {
-			return &t.tag[i]
-		}
-	}
-	return nil
-}
-
 func (t *Ontology) OntologyParser(r io.Reader) (err error) {
 	decoder := xml.NewDecoder(r)
 	//	total := 0
