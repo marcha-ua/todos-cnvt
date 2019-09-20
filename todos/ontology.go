@@ -14,6 +14,15 @@ const (
 	DatagroupTag
 )
 
+const(
+	SubClassGroup="SubClass"
+	DomainGroup="Domain"
+	IndividualGroup="Individual"
+	PropertyGroup="Property"
+	DefaultGroup="Default"
+	CollectionGroup="Collection"
+)
+
 var SupportTag = map[string]NodeTodos{
 	"graph":     GraphTag,
 	"node":      NodeTag,
@@ -69,14 +78,17 @@ func (t *Ontology) FindByTag(tag NodeTodos, skip int) *Node {
 }
 
 func (t *Ontology) FindByAttr(tag NodeTodos, name string, value string, skip int) (int, *Node) {
+	for{
 	n := t.FindByTag(tag, skip)
 	if n == nil {
-		return 0, nil
+		break
 	}
 	for idx, a := range n.AtrList {
 		if strings.EqualFold(a.Name, name) && strings.EqualFold(a.Value, value) {
 			return idx, n
 		}
+	}
+	skip++
 	}
 	return 0, nil
 }
