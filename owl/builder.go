@@ -76,13 +76,6 @@ func TodosFileBuilder(name string, ontology *todos.Ontology, w io.Writer) (err e
 		}
 	}
 
-	//head, err := xmltree.Parse(todos)
-	//if err != nil {
-	//	return
-	//}
-	//head.SetAttr("", "xmlns:"+name, XMLNS+name+"#")
-	//header := xmltree.MarshalIndent(head, "", "   ")
-
 	return
 }
 
@@ -258,18 +251,23 @@ func (o *owlOnto) AddClassCollNode(name string, ontology *todos.Ontology) {
 		fmt.Println("Node not found", name)
 		return
 	}
-
 	//guid :=n.GetAtrValue("guid")
-
 	if !strings.HasPrefix(name, "#") {
 		name = "#" + name
 	}
-	if _, ok := o.Class[name]; ok {
-		return
-	}
+
+	 if _, ok := o.Class[name];ok{
+	 	delete(o.Class,name)
+	 }
+
+	 if _,ok:=o.Collection[name];ok{
+		 return
+	 }
+
 	c := ClassCollTag{
 		About: name,
 	}
+
 	c.Label.InnerXML = c.About
 	c.Label.Datatype = XMLNS_XSD + "string"
 
@@ -288,6 +286,7 @@ func (o *owlOnto) AddClassCollNode(name string, ontology *todos.Ontology) {
 			}
 		}
 	}
+
 	o.Collection[c.About] = c
 }
 
@@ -305,12 +304,12 @@ func (o *owlOnto) AddCollectionNode(name string, class string, ontology *todos.O
 		name = "#" + name
 	}
 
-	coll:= c.Collection
-	coll.ParseType = "Collection"
+
+	c.Collection.ParseType = "Collection"
 	d:=DescriptionTag{}
 	d.About=name
-	coll.Description = append(coll.Description,d)
+	c.Collection.Description = append(c.Collection.Description,d)
 
-	c.Collection = coll
+
 	o.Collection[class] = c
 }
