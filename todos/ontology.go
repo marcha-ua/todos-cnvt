@@ -13,15 +13,23 @@ const (
 	EdgeTag
 	DatagroupTag
 )
-
-const(
-	SubClassGroup="SubClass"
-	DomainGroup="Domain"
-	IndividualGroup="Individual"
-	PropertyGroup="Property"
-	DefaultGroup="Default"
-	CollectionGroup="Collection"
-)
+//
+//const(
+//	SubClassGroup="SubClass"
+//	DomainGroup="Domain"
+//	IndividualGroup="Individual"
+//	PropertyGroup="Property"
+//	DefaultGroup="Default"
+//	CollectionGroup="Collection"
+//)
+type EdgeTagName struct {
+	SubClassGroup   string
+	DomainGroup     string
+	IndividualGroup string
+	PropertyGroup   string
+	DefaultGroup    string
+	CollectionGroup string
+}
 
 var SupportTag = map[string]NodeTodos{
 	"graph":     GraphTag,

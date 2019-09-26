@@ -54,6 +54,8 @@ type Root struct {
 	Rdfs    string   `xml:"xmlns:rdfs,attr"`
 
 	Ontology OntologyTag
+
+	Body []interface{}
 }
 
 func BuildHeader(name string) Root {
@@ -90,9 +92,11 @@ func BuildHeader(name string) Root {
 type ClassTag struct {
 	XMLName  xml.Name        `xml:"owl:Class"`
 	About    string          `xml:"rdf:about,attr"`
-	SubClass []SubClassOfTag `xml:",omitempty"`
 	Label    LabelTag        `xml:",omitempty"`
 	Comment  CommentTag      `xml:",omitempty"`
+	Guid GuidTag`xml:",omitempty"`
+	SubClass []SubClassOfTag `xml:",omitempty"`
+
 }
 
 type SubClassOfTag struct {
@@ -123,13 +127,14 @@ type NamedIndividualTag struct {
 	About   string   `xml:"rdf:about,attr"`
 	Type TypeTag`xml:",omitempty"`
 	Label    LabelTag        `xml:",omitempty"`
+	Guid GuidTag`xml:",omitempty"`
 }
 type TypeTag struct {
 	XMLName xml.Name `xml:"rdf:type"`
 	Resource   string   `xml:"rdf:resource,attr"`
 }
 type CollectionTag struct {
-	XMLName xml.Name `xml:"owl:equivalentClass><owl:Class><owl:unionOf"`
+	XMLName xml.Name `xml:"owl:unionOf"`
 	ParseType   string   `xml:"rdf:parseType,attr,omitempty"`
 	Description []DescriptionTag`xml:",omitempty"`
 }
@@ -137,7 +142,19 @@ type ClassCollTag struct {
 	XMLName  xml.Name        `xml:"owl:Class"`
 	About    string          `xml:"rdf:about,attr"`
 	SubClass []SubClassOfTag `xml:",omitempty"`
+	Guid GuidTag`xml:",omitempty"`
 	Label    LabelTag        `xml:",omitempty"`
 	Comment  CommentTag      `xml:",omitempty"`
-	Collection CollectionTag `xml:",omitempty"`
+	Collection CollectionTag `xml:"owl:equivalentClass>owl:Class>owl:unionOf,omitempty"`
+}
+type AnnotationTag struct{
+	XMLName  xml.Name        `xml:"owl:AnnotationProperty"`
+	About    string          `xml:"rdf:about,attr"`
+}
+
+const GuidDataType = "http://www.w3.org/2000/01/rdf-schema#Literal"
+type GuidTag struct{
+	XMLName  xml.Name        `xml:"guid"`
+	DataType    string          `xml:"rdf:datatype,attr"`
+	CharData string   `xml:",chardata"`
 }

@@ -42,6 +42,11 @@ func main() {
 			Value: "pizza-functional.xml",
 			Usage: "--dst pizza-functional.xml",
 		},
+		cli.StringFlag{
+			Name:  "cfg",
+			Value: "config.toml",
+			Usage: "--cfg config.toml",
+		},
 	}
 
 	app.Action = func(c *cli.Context) error {
@@ -97,7 +102,8 @@ func main() {
 				}
 				w := bufio.NewWriter(f)
 				_, err = w.WriteString(xml.Header)
-				err = owl.TodosFileBuilder(name, &tod, w)
+				cfg:= c.String("cfg")
+				err = owl.TodosFileBuilder(cfg, name, &tod, w)
 				if err != nil {
 					fmt.Println(err)
 				}

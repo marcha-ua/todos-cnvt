@@ -8,21 +8,22 @@ import (
 	"todos-cnvt/todos"
 )
 
-const ()
+
 
 type owlOnto struct {
+	Annotation map[string]AnnotationTag
 	Class      map[string]ClassTag
 	Individual map[string]NamedIndividualTag
 	Collection map[string]ClassCollTag
 
 }
 
-func TodosFileBuilder(name string, ontology *todos.Ontology, w io.Writer) (err error) {
-
+func TodosFileBuilder(cfg string, name string, ontology *todos.Ontology, w io.Writer) (err error) {
 	ont := owlOnto{}
 	ont.Class = make(map[string]ClassTag, 0)
 	ont.Individual = make(map[string]NamedIndividualTag, 0)
 	ont.Collection = make(map[string]ClassCollTag, 0)
+	ont.Annotation = make(map[string]AnnotationTag,0)
 
 	h := BuildHeader(name)
 
@@ -42,38 +43,36 @@ func TodosFileBuilder(name string, ontology *todos.Ontology, w io.Writer) (err e
 	root.Label.InnerXML = root.About
 	root.Label.Datatype = XMLNS_XSD + "string"
 
+	guid:= AnnotationTag{}
+	guid.About = h.Base + "guid"
+	ont.Annotation["guid"]=guid
+
+	edge:= ReadConfigEdge(cfg)
+
 	//ont.FillNodeList(ontology)
-	ont.EdgeNodeAnalyze(ontology)
+	ont.EdgeNodeAnalyze(edge,ontology)
 
 	enc := xml.NewEncoder(w)
 	enc.Indent("  ", "    ")
+
+	for _, n := range ont.Annotation {
+		h.Body = append(h.Body,n)
+	}
+
+	for _, n := range ont.Class {
+		h.Body = append(h.Body,n)
+	}
+
+	for _, n := range ont.Individual {
+		h.Body = append(h.Body,n)
+	}
+
+	for _, n := range ont.Collection {
+		h.Body = append(h.Body,n)
+	}
 	if err = enc.Encode(h); err != nil {
 		fmt.Printf("error: %v\n", err)
 		return
-	}
-
-	//if err = enc.Encode(root); err != nil {
-	//	fmt.Printf("error: %v\n", err)
-	//	return
-	//}
-
-	for _, n := range ont.Class {
-		if err = enc.Encode(n); err != nil {
-			fmt.Printf("error: %v\n", err)
-			return
-		}
-	}
-	for _, n := range ont.Individual {
-		if err = enc.Encode(n); err != nil {
-			fmt.Printf("error: %v\n", err)
-			return
-		}
-	}
-	for _, n := range ont.Collection {
-		if err = enc.Encode(n); err != nil {
-			fmt.Printf("error: %v\n", err)
-			return
-		}
 	}
 
 	return
@@ -119,8 +118,9 @@ func (o *owlOnto) FillNodeList(ontology *todos.Ontology) {
 	}
 }
 
-func (o *owlOnto) EdgeNodeAnalyze(ontology *todos.Ontology) {
+func (o *owlOnto) EdgeNodeAnalyze(edgeName todos.EdgeTagName, ontology *todos.Ontology) {
 	skip := 0
+
 	for {
 		n := ontology.FindByTag(todos.EdgeTag, skip)
 		if n == nil {
@@ -135,14 +135,14 @@ func (o *owlOnto) EdgeNodeAnalyze(ontology *todos.Ontology) {
 			continue
 		}
 		switch group {
-		case todos.SubClassGroup:
+		case edgeName.SubClassGroup:
 			node1 := n.GetAtrValue("node1")
 			o.AddClassNode(node1, ontology)
 			node2 := n.GetAtrValue("node2")
 			o.AddClassNode(node2, ontology)
  			o.AddSubClassNode(node1, node2, ontology)
-		case todos.DefaultGroup:
-		case todos.CollectionGroup:
+		case edgeName.DefaultGroup:
+		case edgeName.CollectionGroup:
 			node1 := n.GetAtrValue("node1")
 			o.AddClassNode(node1, ontology)
 			node2 := n.GetAtrValue("node2")
@@ -150,17 +150,17 @@ func (o *owlOnto) EdgeNodeAnalyze(ontology *todos.Ontology) {
 			o.AddSubClassNode(node1, node2, ontology)
 			o.AddCollectionNode(node1,node2,ontology)
 
-		case todos.DomainGroup:
+		case edgeName.DomainGroup:
 			node1 := n.GetAtrValue("node1")
 			o.AddClassNode(node1, ontology)
 			node2 := n.GetAtrValue("node2")
 			o.AddClassNode(node2, ontology)
 			o.AddSubClassNode(node1, node2, ontology)
-		case todos.IndividualGroup:
+		case edgeName.IndividualGroup:
 			node1 := n.GetAtrValue("node1")
 			node2 := n.GetAtrValue("node2")
 			o.AddIndividualNode(node1,node2, ontology)
-		case todos.PropertyGroup:
+		case edgeName.PropertyGroup:
 
 		}
 		skip++
@@ -175,7 +175,7 @@ func (o *owlOnto) AddClassNode(name string, ontology *todos.Ontology) {
 		return
 	}
 
-	//guid :=n.GetAtrValue("guid")
+
 
 	if !strings.HasPrefix(name, "#") {
 		name = "#" + name
@@ -188,6 +188,9 @@ func (o *owlOnto) AddClassNode(name string, ontology *todos.Ontology) {
 	}
 	c.Label.InnerXML = c.About
 	c.Label.Datatype = XMLNS_XSD + "string"
+	guid :=n.GetAtrValue("guid")
+	c.Guid.DataType = GuidDataType
+	c.Guid.CharData = guid
 
 	if len(n.Children) > 0 {
 		for _, v := range n.Children {
@@ -226,6 +229,11 @@ func (o *owlOnto) AddSubClassNode(class string, subclass string, ontology *todos
 }
 
 func (o *owlOnto) AddIndividualNode(name string, class string, ontology *todos.Ontology) {
+	_, n := ontology.FindByAttr(todos.NodeTag, "nodeName", name, 0)
+	if n == nil {
+		fmt.Println("Node not found", name)
+		return
+	}
 	if !strings.HasPrefix(name, "#") {
 		name = "#" + name
 	}
@@ -241,6 +249,10 @@ func (o *owlOnto) AddIndividualNode(name string, class string, ontology *todos.O
 	}
 i.Type.Resource=class
 
+	guid :=n.GetAtrValue("guid")
+	i.Guid.DataType = GuidDataType
+	i.Guid.CharData = guid
+
 	o.Individual[name]=i
 }
 
@@ -251,7 +263,7 @@ func (o *owlOnto) AddClassCollNode(name string, ontology *todos.Ontology) {
 		fmt.Println("Node not found", name)
 		return
 	}
-	//guid :=n.GetAtrValue("guid")
+
 	if !strings.HasPrefix(name, "#") {
 		name = "#" + name
 	}
@@ -270,6 +282,10 @@ func (o *owlOnto) AddClassCollNode(name string, ontology *todos.Ontology) {
 
 	c.Label.InnerXML = c.About
 	c.Label.Datatype = XMLNS_XSD + "string"
+
+	guid :=n.GetAtrValue("guid")
+	c.Guid.DataType = GuidDataType
+	c.Guid.CharData = guid
 
 	if len(n.Children) > 0 {
 		for _, v := range n.Children {
