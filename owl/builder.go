@@ -175,8 +175,6 @@ func (o *owlOnto) AddClassNode(name string, ontology *todos.Ontology) {
 		return
 	}
 
-
-
 	if !strings.HasPrefix(name, "#") {
 		name = "#" + name
 	}
@@ -214,18 +212,21 @@ func (o *owlOnto) AddSubClassNode(class string, subclass string, ontology *todos
 	if !strings.HasPrefix(class, "#") {
 		class = "#" + class
 	}
-	c, ok := o.Class[class]
-	if !ok {
-		fmt.Println("Class node not found", class)
-		return
-	}
+
 	sb := SubClassOfTag{}
 	if !strings.HasPrefix(subclass, "#") {
 		subclass = "#" + subclass
 	}
 	sb.Resource = subclass
-	c.SubClass = append(c.SubClass, sb)
-	o.Class[class]=c
+
+	if c, ok := o.Class[class];ok {
+		c.SubClass = append(c.SubClass, sb)
+		o.Class[class]=c
+	}
+	if c, ok := o.Collection[class];ok {
+		c.SubClass = append(c.SubClass, sb)
+		o.Class[class]=c
+	}
 }
 
 func (o *owlOnto) AddIndividualNode(name string, class string, ontology *todos.Ontology) {
