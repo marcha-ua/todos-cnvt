@@ -218,14 +218,19 @@ func (o *owlOnto) AddSubClassNode(class string, subclass string, ontology *todos
 		subclass = "#" + subclass
 	}
 	sb.Resource = subclass
-
+found:=false
 	if c, ok := o.Class[class];ok {
 		c.SubClass = append(c.SubClass, sb)
 		o.Class[class]=c
+		found = true
 	}
 	if c, ok := o.Collection[class];ok {
 		c.SubClass = append(c.SubClass, sb)
-		o.Class[class]=c
+		o.Collection[class]=c
+		found = true
+	}
+	if!found{
+		fmt.Println("Subclass not found class",class, subclass)
 	}
 }
 
