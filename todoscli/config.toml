@@ -1,0 +1,7 @@
+[edgetag]
+subclass="SubClass"
+domain="Domain"
+individual="Individual" 
+property ="Property"
+default ="Default"
+collection="Collection"

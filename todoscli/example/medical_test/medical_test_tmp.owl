@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <rdf:RDF xmlns="http://inhost.com.ua/ontologies/medical_test_tmp#" xml:base="http://inhost.com.ua/ontologies/medical_test_tmp#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+      <owl:Ontology rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp">
+          <owl:versionIRI rdf:resource="http://inhost.com.ua/ontologies/medical_test_tmp"></owl:versionIRI>
+          <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">medical_test_tmp</rdfs:label>
+      </owl:Ontology>
+      <owl:AnnotationProperty rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp#guid"></owl:AnnotationProperty>
+      <owl:Class rdf:about="#medicalOntology">
+          <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#medicalOntology</rdfs:label>
+          <rdfs:comment></rdfs:comment>
+          <guid rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">D8608911A932</guid>
+      </owl:Class>
+      <owl:Class rdf:about="#BloodGroup1">
+          <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#BloodGroup1</rdfs:label>
+          <rdfs:comment></rdfs:comment>
+          <guid rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">A68B6BD3841A</guid>
+          <rdfs:subClassOf rdf:resource="#BloodGroup"></rdfs:subClassOf>
+      </owl:Class>
+      <owl:Class rdf:about="#Patient">
+          <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#Patient</rdfs:label>
+          <rdfs:comment></rdfs:comment>
+          <guid rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">D8645F882B58</guid>
+          <rdfs:subClassOf rdf:resource="#Person"></rdfs:subClassOf>
+      </owl:Class>
+      <owl:Class rdf:about="#Diagnosis">
+          <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#Diagnosis</rdfs:label>
+          <rdfs:comment xml:lang="ua">Поточний стан здоров&#39;я (діагноз)</rdfs:comment>
+          <guid rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">D8641B6DE253</guid>
+          <rdfs:subClassOf rdf:resource="#medicalOntology"></rdfs:subClassOf>
+          <rdfs:subClassOf rdf:resource="#Patient"></rdfs:subClassOf>
+      </owl:Class>
+      <owl:Class rdf:about="#BloodGroup4">
+          <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#BloodGroup4</rdfs:label>
+          <rdfs:comment></rdfs:comment>
+          <guid rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">D87FB2336CF1</guid>
+          <rdfs:subClassOf rdf:resource="#BloodGroup"></rdfs:subClassOf>
+      </owl:Class>
+      <owl:Class rdf:about="#BloodGroup2">
+          <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#BloodGroup2</rdfs:label>
+          <rdfs:comment></rdfs:comment>
+          <guid rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">D87FB2336CF2</guid>
+          <rdfs:subClassOf rdf:resource="#BloodGroup"></rdfs:subClassOf>
+      </owl:Class>
+      <owl:Class rdf:about="#VitalParameters">
+          <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#VitalParameters</rdfs:label>
+          <rdfs:comment xml:lang="ua">Параметри, що досліджуються в пацієнтів</rdfs:comment>
+          <guid rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">D86536A50AD0</guid>
+          <rdfs:subClassOf rdf:resource="#medicalOntology"></rdfs:subClassOf>
+          <rdfs:subClassOf rdf:resource="#Patient"></rdfs:subClassOf>
+      </owl:Class>
+      <owl:Class rdf:about="#Person">
+          <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#Person</rdfs:label>
+          <rdfs:comment></rdfs:comment>
+          <guid rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">D864D4A5F9F6</guid>
+          <rdfs:subClassOf rdf:resource="#medicalOntology"></rdfs:subClassOf>
+      </owl:Class>
+      <owl:Class rdf:about="#BloodPressure">
+          <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#BloodPressure</rdfs:label>
+          <rdfs:comment xml:lang="ua">Кровяное давление</rdfs:comment>
+          <guid rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">D86275A5CC58</guid>
+          <rdfs:subClassOf rdf:resource="#VitalParameters"></rdfs:subClassOf>
+      </owl:Class>
+      <owl:Class rdf:about="#Temperature">
+          <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#Temperature</rdfs:label>
+          <rdfs:comment xml:lang="ua">Температура пацієнта</rdfs:comment>
+          <guid rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">D864FE0A9720</guid>
+          <rdfs:subClassOf rdf:resource="#VitalParameters"></rdfs:subClassOf>
+      </owl:Class>
+      <owl:Class rdf:about="#Doctor">
+          <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#Doctor</rdfs:label>
+          <rdfs:comment></rdfs:comment>
+          <guid rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">D863DF2B1101</guid>
+          <rdfs:subClassOf rdf:resource="#Person"></rdfs:subClassOf>
+      </owl:Class>
+      <owl:Class rdf:about="#BloodGroup3">
+          <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#BloodGroup3</rdfs:label>
+          <rdfs:comment></rdfs:comment>
+          <guid rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">D87FB2336CF3</guid>
+          <rdfs:subClassOf rdf:resource="#BloodGroup"></rdfs:subClassOf>
+      </owl:Class>
+      <owl:NamedIndividual rdf:about="#Patient1">
+          <rdf:type rdf:resource="#Patient"></rdf:type>
+          <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:label>
+          <guid rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">D87EF0125307</guid>
+      </owl:NamedIndividual>
+      <owl:NamedIndividual rdf:about="#Patient2">
+          <rdf:type rdf:resource="#Patient"></rdf:type>
+          <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:label>
+          <guid rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">D87EF0125307</guid>
+      </owl:NamedIndividual>
+      <owl:Class rdf:about="#BloodGroup">
+          <guid rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">D86230D1AD50</guid>
+          <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#BloodGroup</rdfs:label>
+          <rdfs:comment xml:lang="ua">Групи крові</rdfs:comment>
+          <owl:equivalentClass>
+              <owl:Class>
+                  <owl:unionOf rdf:parseType="Collection">
+                      <rdf:Description rdf:about="#BloodGroup4"></rdf:Description>
+                      <rdf:Description rdf:about="#BloodGroup2"></rdf:Description>
+                      <rdf:Description rdf:about="#BloodGroup3"></rdf:Description>
+                      <rdf:Description rdf:about="#BloodGroup1"></rdf:Description>
+                  </owl:unionOf>
+              </owl:Class>
+          </owl:equivalentClass>
+      </owl:Class>
+  </rdf:RDF>

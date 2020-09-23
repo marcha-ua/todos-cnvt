@@ -94,9 +94,8 @@ type ClassTag struct {
 	About    string          `xml:"rdf:about,attr"`
 	Label    LabelTag        `xml:",omitempty"`
 	Comment  CommentTag      `xml:",omitempty"`
-	Guid GuidTag`xml:",omitempty"`
+	Guid     GuidTag         `xml:",omitempty"`
 	SubClass []SubClassOfTag `xml:",omitempty"`
-
 }
 
 type SubClassOfTag struct {
@@ -125,36 +124,37 @@ type DescriptionTag struct {
 type NamedIndividualTag struct {
 	XMLName xml.Name `xml:"owl:NamedIndividual"`
 	About   string   `xml:"rdf:about,attr"`
-	Type TypeTag`xml:",omitempty"`
-	Label    LabelTag        `xml:",omitempty"`
-	Guid GuidTag`xml:",omitempty"`
+	Type    TypeTag  `xml:",omitempty"`
+	Label   LabelTag `xml:",omitempty"`
+	Guid    GuidTag  `xml:",omitempty"`
 }
 type TypeTag struct {
-	XMLName xml.Name `xml:"rdf:type"`
-	Resource   string   `xml:"rdf:resource,attr"`
+	XMLName  xml.Name `xml:"rdf:type"`
+	Resource string   `xml:"rdf:resource,attr"`
 }
 type CollectionTag struct {
-	XMLName xml.Name `xml:"owl:unionOf"`
-	ParseType   string   `xml:"rdf:parseType,attr,omitempty"`
-	Description []DescriptionTag`xml:",omitempty"`
+	XMLName     xml.Name         `xml:"owl:unionOf"`
+	ParseType   string           `xml:"rdf:parseType,attr,omitempty"`
+	Description []DescriptionTag `xml:",omitempty"`
 }
 type ClassCollTag struct {
-	XMLName  xml.Name        `xml:"owl:Class"`
-	About    string          `xml:"rdf:about,attr"`
-	SubClass []SubClassOfTag `xml:",omitempty"`
-	Guid GuidTag`xml:",omitempty"`
-	Label    LabelTag        `xml:",omitempty"`
-	Comment  CommentTag      `xml:",omitempty"`
-	Collection CollectionTag `xml:"owl:equivalentClass>owl:Class>owl:unionOf,omitempty"`
+	XMLName    xml.Name        `xml:"owl:Class"`
+	About      string          `xml:"rdf:about,attr"`
+	SubClass   []SubClassOfTag `xml:",omitempty"`
+	Guid       GuidTag         `xml:",omitempty"`
+	Label      LabelTag        `xml:",omitempty"`
+	Comment    CommentTag      `xml:",omitempty"`
+	Collection CollectionTag   `xml:"owl:equivalentClass>owl:Class>owl:unionOf,omitempty"`
 }
-type AnnotationTag struct{
-	XMLName  xml.Name        `xml:"owl:AnnotationProperty"`
-	About    string          `xml:"rdf:about,attr"`
+type AnnotationTag struct {
+	XMLName xml.Name `xml:"owl:AnnotationProperty"`
+	About   string   `xml:"rdf:about,attr"`
 }
 
 const GuidDataType = "http://www.w3.org/2000/01/rdf-schema#Literal"
-type GuidTag struct{
-	XMLName  xml.Name        `xml:"guid"`
-	DataType    string          `xml:"rdf:datatype,attr"`
+
+type GuidTag struct {
+	XMLName  xml.Name `xml:"guid"`
+	DataType string   `xml:"rdf:datatype,attr"`
 	CharData string   `xml:",chardata"`
 }

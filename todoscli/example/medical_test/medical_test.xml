@@ -1,0 +1,56 @@
+<Graph nodesize="10" vspacing="3" hspacing="20" padding="4" guid="0CF9DF30-0C95-CB74-26C0-D8563AB44363" searchurl="https://www.google.com.ua/search?q=###SEARCH###">
+  <datagroups/>
+  <Nodes>
+    <Node guid="D8608911A932" nodeName="medicalOntology" nclass="Thing" shape="circle" color="13421772" xPos="868" yPos="68" font="Verdana" fontsize="14"/>
+    <Node guid="D86230D1AD50" nodeName="BloodGroup" nclass="" shape="circle" color="13421772" xPos="449" yPos="179" font="Verdana" fontsize="14">
+      <data tclass="" type="text" link="">Групи крові</data>
+    </Node>
+    <Node guid="D86275A5CC58" nodeName="BloodPressure" nclass="" shape="circle" color="13421772" xPos="407" yPos="63" font="Verdana" fontsize="14">
+      <data tclass="" type="text" link="">Кровяное давление</data>
+    </Node>
+    <Node guid="D863DF2B1101" nodeName="Doctor" nclass="" shape="circle" color="13421772" xPos="512" yPos="370" font="Verdana" fontsize="14"/>
+    <Node guid="D8641B6DE253" nodeName="Diagnosis" nclass="" shape="circle" color="13421772" xPos="608" yPos="70" font="Verdana" fontsize="14">
+      <data tclass="" type="text" link="">Поточний стан здоров'я (діагноз)</data>
+    </Node>
+    <Node guid="D8645F882B58" nodeName="Patient" nclass="" shape="circle" color="13421772" xPos="476" yPos="255" font="Verdana" fontsize="14"/>
+    <Node guid="D864D4A5F9F6" nodeName="Person" nclass="" shape="circle" color="13421772" xPos="675" yPos="256" font="Verdana" fontsize="14"/>
+    <Node guid="D864FE0A9720" nodeName="Temperature" nclass="" shape="circle" color="13421772" xPos="439" yPos="105" font="Verdana" fontsize="14">
+      <data tclass="" type="text" link="">Температура пацієнта</data>
+    </Node>
+    <Node guid="D86536A50AD0" nodeName="VitalParameters" nclass="" shape="circle" color="13421772" xPos="674" yPos="170" font="Verdana" fontsize="14">
+      <data tclass="" type="text" link="">Параметри, що досліджуються в пацієнтів</data>
+    </Node>
+    <Node guid="D87EF0125307" nodeName="Patient1" nclass="" shape="circle" color="153" xPos="311" yPos="287" font="Verdana" fontsize="14"/>
+    <Node guid="D87FB2336CF1" nodeName="BloodGroup4" nclass="" shape="square" color="6684672" xPos="147" yPos="110" font="Verdana" fontsize="14"/>
+    <Node guid="D87FB2336CF2" nodeName="BloodGroup2" nclass="" shape="square" color="6684672" xPos="146" yPos="79" font="Verdana" fontsize="14"/>
+    <Node guid="D87FB2336CF3" nodeName="BloodGroup3" nclass="" shape="square" color="6684672" xPos="147" yPos="143" font="Verdana" fontsize="14"/>
+    <Node guid="A68B6BD3841A" nodeName="BloodGroup1" nclass="" shape="square" color="6684672" xPos="149" yPos="49" font="Verdana" fontsize="14"/>
+    <Node guid="D87EF0125307" nodeName="Patient2" nclass="" shape="circle" color="153" xPos="324" yPos="357" font="Verdana" fontsize="14"/>
+  </Nodes>
+  <Linkgroups>
+    <Group name="SubClass" color="13369599"/>
+    <Group name="Domain" color="16763955"/>
+    <Group name="Default" color="10066329"/>
+    <Group name="Individual" color="255"/>
+    <Group name="Property" color="39168"/>
+    <Group name="Collection" color="39423"/>
+  </Linkgroups>
+  <Edges>
+    <Edge guid="D8670D8825B1" edgeName="link_1" node1="VitalParameters" node2="medicalOntology" group="SubClass" istwoway="false"/>
+    <Edge guid="D867160BA803" edgeName="link_2" node1="Person" node2="medicalOntology" group="SubClass" istwoway="false"/>
+    <Edge guid="D8678EA7460A" edgeName="link_3" node1="BloodGroup" node2="VitalParameters" group="SubClass" istwoway="false"/>
+    <Edge guid="D867972BB103" edgeName="link_4" node1="BloodPressure" node2="VitalParameters" group="SubClass" istwoway="false"/>
+    <Edge guid="D867A1990C98" edgeName="link_5" node1="Temperature" node2="VitalParameters" group="SubClass" istwoway="false"/>
+    <Edge guid="D867AE7567B4" edgeName="link_6" node1="Doctor" node2="Person" group="SubClass" istwoway="false"/>
+    <Edge guid="D867B72BF582" edgeName="link_7" node1="Patient" node2="Person" group="SubClass" istwoway="false"/>
+    <Edge guid="D867E58D17D6" edgeName="link_8" node1="Diagnosis" node2="medicalOntology" group="SubClass" istwoway="false"/>
+    <Edge guid="D880246C7232" edgeName="link_9" node1="Patient1" node2="Patient" group="Individual" istwoway="false"/>
+    <Edge guid="D8803DA051E3" edgeName="link_10" node1="BloodGroup4" node2="BloodGroup" group="Collection" istwoway="false"/>
+    <Edge guid="D8803DA051E4" edgeName="link_11" node1="BloodGroup2" node2="BloodGroup" group="Collection" istwoway="false"/>
+    <Edge guid="D8803DA051E5" edgeName="link_12" node1="BloodGroup3" node2="BloodGroup" group="Collection" istwoway="false"/>
+    <Edge guid="D896239A20EE" edgeName="link_15" node1="VitalParameters" node2="Patient" group="Domain" istwoway="false"/>
+    <Edge guid="A68B86297BCD" edgeName="" node1="BloodGroup1" node2="BloodGroup" group="Collection" istwoway="false"/>
+    <Edge guid="A69028C31223" edgeName="" node1="Patient2" node2="Patient" group="Individual" istwoway="false"/>
+    <Edge guid="A6953588A462" edgeName="" node1="Diagnosis" node2="Patient" group="Domain" istwoway="false"/>
+  </Edges>
+</Graph>

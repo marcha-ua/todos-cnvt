@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://inhost.com.ua/ontologies/medical_test_tmp#"
+     xml:base="http://inhost.com.ua/ontologies/medical_test_tmp"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp">
+        <owl:versionIRI rdf:resource="http://inhost.com.ua/ontologies/medical_test_tmp"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">medical_test_tmp</rdfs:label>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://inhost.com.ua/ontologies/medical_test_tmp#guid -->
+
+    <owl:AnnotationProperty rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp#guid"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://inhost.com.ua/ontologies/medical_test_tmp#BloodGroup -->
+
+    <owl:Class rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp#BloodGroup">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp#BloodGroup1"/>
+                    <rdf:Description rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp#BloodGroup2"/>
+                    <rdf:Description rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp#BloodGroup3"/>
+                    <rdf:Description rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp#BloodGroup4"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="ua">Групи крові</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#BloodGroup</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://inhost.com.ua/ontologies/medical_test_tmp#BloodGroup1 -->
+
+    <owl:Class rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp#BloodGroup1">
+        <rdfs:subClassOf rdf:resource="http://inhost.com.ua/ontologies/medical_test_tmp#BloodGroup"/>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#BloodGroup1</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://inhost.com.ua/ontologies/medical_test_tmp#BloodGroup2 -->
+
+    <owl:Class rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp#BloodGroup2">
+        <rdfs:subClassOf rdf:resource="http://inhost.com.ua/ontologies/medical_test_tmp#BloodGroup"/>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#BloodGroup2</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://inhost.com.ua/ontologies/medical_test_tmp#BloodGroup3 -->
+
+    <owl:Class rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp#BloodGroup3">
+        <rdfs:subClassOf rdf:resource="http://inhost.com.ua/ontologies/medical_test_tmp#BloodGroup"/>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#BloodGroup3</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://inhost.com.ua/ontologies/medical_test_tmp#BloodGroup4 -->
+
+    <owl:Class rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp#BloodGroup4">
+        <rdfs:subClassOf rdf:resource="http://inhost.com.ua/ontologies/medical_test_tmp#BloodGroup"/>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#BloodGroup4</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://inhost.com.ua/ontologies/medical_test_tmp#BloodPressure -->
+
+    <owl:Class rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp#BloodPressure">
+        <rdfs:subClassOf rdf:resource="http://inhost.com.ua/ontologies/medical_test_tmp#VitalParameters"/>
+        <rdfs:comment xml:lang="ua">Кровяное давление</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#BloodPressure</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://inhost.com.ua/ontologies/medical_test_tmp#Diagnosis -->
+
+    <owl:Class rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp#Diagnosis">
+        <rdfs:subClassOf rdf:resource="http://inhost.com.ua/ontologies/medical_test_tmp#Patient"/>
+        <rdfs:subClassOf rdf:resource="http://inhost.com.ua/ontologies/medical_test_tmp#medicalOntology"/>
+        <rdfs:comment xml:lang="ua">Поточний стан здоров&apos;я (діагноз)</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#Diagnosis</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://inhost.com.ua/ontologies/medical_test_tmp#Doctor -->
+
+    <owl:Class rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp#Doctor">
+        <rdfs:subClassOf rdf:resource="http://inhost.com.ua/ontologies/medical_test_tmp#Person"/>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#Doctor</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://inhost.com.ua/ontologies/medical_test_tmp#Patient -->
+
+    <owl:Class rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp#Patient">
+        <rdfs:subClassOf rdf:resource="http://inhost.com.ua/ontologies/medical_test_tmp#Person"/>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#Patient</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://inhost.com.ua/ontologies/medical_test_tmp#Person -->
+
+    <owl:Class rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp#Person">
+        <rdfs:subClassOf rdf:resource="http://inhost.com.ua/ontologies/medical_test_tmp#medicalOntology"/>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#Person</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://inhost.com.ua/ontologies/medical_test_tmp#Temperature -->
+
+    <owl:Class rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp#Temperature">
+        <rdfs:subClassOf rdf:resource="http://inhost.com.ua/ontologies/medical_test_tmp#VitalParameters"/>
+        <rdfs:comment xml:lang="ua">Температура пацієнта</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#Temperature</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://inhost.com.ua/ontologies/medical_test_tmp#VitalParameters -->
+
+    <owl:Class rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp#VitalParameters">
+        <rdfs:subClassOf rdf:resource="http://inhost.com.ua/ontologies/medical_test_tmp#Patient"/>
+        <rdfs:subClassOf rdf:resource="http://inhost.com.ua/ontologies/medical_test_tmp#medicalOntology"/>
+        <guid rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">123</guid>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">test</rdfs:comment>
+        <rdfs:comment xml:lang="ua">Параметри, що досліджуються в пацієнтів</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#VitalParameters</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://inhost.com.ua/ontologies/medical_test_tmp#medicalOntology -->
+
+    <owl:Class rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp#medicalOntology">
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#medicalOntology</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://inhost.com.ua/ontologies/medical_test_tmp#Patient1 -->
+
+    <owl:NamedIndividual rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp#Patient1">
+        <rdf:type rdf:resource="http://inhost.com.ua/ontologies/medical_test_tmp#Patient"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://inhost.com.ua/ontologies/medical_test_tmp#Patient2 -->
+
+    <owl:NamedIndividual rdf:about="http://inhost.com.ua/ontologies/medical_test_tmp#Patient2">
+        <rdf:type rdf:resource="http://inhost.com.ua/ontologies/medical_test_tmp#Patient"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:label>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

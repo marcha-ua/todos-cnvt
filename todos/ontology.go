@@ -13,6 +13,7 @@ const (
 	EdgeTag
 	DatagroupTag
 )
+
 //
 //const(
 //	SubClassGroup="SubClass"
@@ -86,17 +87,17 @@ func (t *Ontology) FindByTag(tag NodeTodos, skip int) *Node {
 }
 
 func (t *Ontology) FindByAttr(tag NodeTodos, name string, value string, skip int) (int, *Node) {
-	for{
-	n := t.FindByTag(tag, skip)
-	if n == nil {
-		break
-	}
-	for idx, a := range n.AtrList {
-		if strings.EqualFold(a.Name, name) && strings.EqualFold(a.Value, value) {
-			return idx, n
+	for {
+		n := t.FindByTag(tag, skip)
+		if n == nil {
+			break
 		}
-	}
-	skip++
+		for idx, a := range n.AtrList {
+			if strings.EqualFold(a.Name, name) && strings.EqualFold(a.Value, value) {
+				return idx, n
+			}
+		}
+		skip++
 	}
 	return 0, nil
 }

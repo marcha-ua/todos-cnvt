@@ -1,0 +1,330 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.xfront.com/owl/ontologies/camera/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.xfront.com/owl/ontologies/camera/">
+    <Prefix name="" IRI="http://www.xfront.com/owl/ontologies/camera/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="camera" IRI="http://www.xfront.com/owl/ontologies/camera/#"/>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal>
+        Camera OWL Ontology                           
+      Author: Roger L. Costello                                   
+        </Literal>
+    </Annotation>
+    <Declaration>
+        <Class IRI="#Body"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BodyWithNonAdjustableShutterSpeed"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Camera"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Digital"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Large-Format"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Lens"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Money"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PurchaseableItem"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Range"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SLR"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Viewer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Window"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#body"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#compatibleWith"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#cost"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#lens"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#part"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#shutter-speed"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#viewFinder"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#aperture"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#currency"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#f-stop"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#focal-length"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#max"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#min"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#size"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#units"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="aa1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ThroughTheLens"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WindowOnTopOfCamera"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#BodyWithNonAdjustableShutterSpeed"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Body"/>
+            <ObjectExactCardinality cardinality="0">
+                <ObjectProperty IRI="#shutter-speed"/>
+            </ObjectExactCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#SLR"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Camera"/>
+            <ObjectHasValue>
+                <ObjectProperty IRI="#viewFinder"/>
+                <NamedIndividual IRI="#ThroughTheLens"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Viewer"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#ThroughTheLens"/>
+            <NamedIndividual IRI="#WindowOnTopOfCamera"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#Body"/>
+        <Class IRI="#PurchaseableItem"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Camera"/>
+        <Class IRI="#PurchaseableItem"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Digital"/>
+        <Class IRI="#Camera"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Large-Format"/>
+        <Class IRI="#Camera"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Large-Format"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#body"/>
+            <Class IRI="#BodyWithNonAdjustableShutterSpeed"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Lens"/>
+        <Class IRI="#PurchaseableItem"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Money"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PurchaseableItem"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Range"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Window"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#BodyWithNonAdjustableShutterSpeed"/>
+        <NamedIndividual IRI="aa1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Window"/>
+        <NamedIndividual IRI="#ThroughTheLens"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Window"/>
+        <NamedIndividual IRI="#WindowOnTopOfCamera"/>
+    </ClassAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#body"/>
+        <ObjectProperty IRI="#part"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#lens"/>
+        <ObjectProperty IRI="#part"/>
+    </SubObjectPropertyOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#viewFinder"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#body"/>
+        <Class IRI="#Camera"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#compatibleWith"/>
+        <Class IRI="#Lens"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#cost"/>
+        <Class IRI="#PurchaseableItem"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#lens"/>
+        <Class IRI="#Camera"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#shutter-speed"/>
+        <Class IRI="#Body"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#viewFinder"/>
+        <Class IRI="#Camera"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#body"/>
+        <Class IRI="#Body"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#compatibleWith"/>
+        <Class IRI="#Body"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#cost"/>
+        <Class IRI="#Money"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#lens"/>
+        <Class IRI="#Lens"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#shutter-speed"/>
+        <Class IRI="#Range"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#viewFinder"/>
+        <Class IRI="#Viewer"/>
+    </ObjectPropertyRange>
+    <EquivalentDataProperties>
+        <DataProperty IRI="#aperture"/>
+        <DataProperty IRI="#f-stop"/>
+    </EquivalentDataProperties>
+    <EquivalentDataProperties>
+        <DataProperty IRI="#focal-length"/>
+        <DataProperty IRI="#size"/>
+    </EquivalentDataProperties>
+    <DataPropertyDomain>
+        <DataProperty IRI="#aperture"/>
+        <Class IRI="#Lens"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#currency"/>
+        <Class IRI="#Money"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#f-stop"/>
+        <Class IRI="#Lens"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#focal-length"/>
+        <Class IRI="#Lens"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#max"/>
+        <Class IRI="#Range"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#min"/>
+        <Class IRI="#Range"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#size"/>
+        <Class IRI="#Lens"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#units"/>
+        <Class IRI="#Range"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#aperture"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#currency"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#f-stop"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#focal-length"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#max"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#min"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#size"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#units"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

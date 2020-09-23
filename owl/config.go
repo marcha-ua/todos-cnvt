@@ -8,18 +8,18 @@ import (
 	"todos-cnvt/todos"
 )
 
-func ReadConfigEdge(cfg string)todos.EdgeTagName{
+func ReadConfigEdge(cfg string) todos.EdgeTagName {
 
 	viper.SetDefault("APP_PORT", "8080")
-ext:="toml"
-file:="config"
-dir:="."
-	if len(cfg)!=0{
+	ext := "toml"
+	file := "config"
+	dir := "."
+	if len(cfg) != 0 {
 		dir = path.Dir(cfg)
-		ext=path.Ext(cfg)
-		file=path.Base(cfg)
+		ext = path.Ext(cfg)
+		file = path.Base(cfg)
 		file = strings.Trim(file, ext)
-		ext = strings.TrimLeft(ext,".")
+		ext = strings.TrimLeft(ext, ".")
 	}
 
 	viper.SetDefault("subclass", "SubClass")
@@ -34,15 +34,17 @@ dir:="."
 		viper.SetConfigType(ext)
 		viper.AddConfigPath(dir)
 		viper.ReadInConfig()
-	} else {  viper.AutomaticEnv() }
+	} else {
+		viper.AutomaticEnv()
+	}
 
-edge:=todos.EdgeTagName{
-	SubClassGroup:viper.GetString("subclass"),
-	DomainGroup:viper.GetString("domain"),
-	IndividualGroup :viper.GetString("individual"),
-	PropertyGroup:viper.GetString("property"),
-	DefaultGroup    :viper.GetString("default"),
-	CollectionGroup :viper.GetString("collection"),
-}
-return edge
+	edge := todos.EdgeTagName{
+		SubClassGroup:   viper.GetString("subclass"),
+		DomainGroup:     viper.GetString("domain"),
+		IndividualGroup: viper.GetString("individual"),
+		PropertyGroup:   viper.GetString("property"),
+		DefaultGroup:    viper.GetString("default"),
+		CollectionGroup: viper.GetString("collection"),
+	}
+	return edge
 }

@@ -1,15 +1,15 @@
 package parser
 
 type Node struct {
-	id int
+	id       int
 	Tag      string
 	Text     string
-	Atr []Attribute
+	Atr      []Attribute
 	children []*Node
 }
 
-type Attribute struct{
-	Name string
+type Attribute struct {
+	Name  string
 	Value string
 }
 

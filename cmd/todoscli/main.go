@@ -102,7 +102,7 @@ func main() {
 				}
 				w := bufio.NewWriter(f)
 				_, err = w.WriteString(xml.Header)
-				cfg:= c.String("cfg")
+				cfg := c.String("cfg")
 				err = owl.TodosFileBuilder(cfg, name, &tod, w)
 				if err != nil {
 					fmt.Println(err)
